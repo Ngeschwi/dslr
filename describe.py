@@ -80,7 +80,7 @@ def getMin(_dataColumnsCourses, _index):
     return _min
 
 
-def get25(_dataColumnsCourses, _index):
+def getList(_dataColumnsCourses, _index):
     _list = []
     for j in range(len(_dataColumnsCourses[_index])):
         if j != 0:
@@ -88,28 +88,21 @@ def get25(_dataColumnsCourses, _index):
                 _list.append(float(_dataColumnsCourses[_index][j]))
 
     _list.sort()
+    return _list
+
+
+def get25(_dataColumnsCourses, _index):
+    _list = getList(_dataColumnsCourses, _index)
     return _list[int(len(_list) * 0.25)]
 
 
 def get50(_dataColumnsCourses, _index):
-    _list = []
-    for j in range(len(_dataColumnsCourses[_index])):
-        if j != 0:
-            if _dataColumnsCourses[_index][j] != '':
-                _list.append(float(_dataColumnsCourses[_index][j]))
-
-    _list.sort()
+    _list = getList(_dataColumnsCourses, _index)
     return _list[int(len(_list) * 0.5)]
 
 
 def get75(_dataColumnsCourses, _index):
-    _list = []
-    for j in range(len(_dataColumnsCourses[_index])):
-        if j != 0:
-            if _dataColumnsCourses[_index][j] != '':
-                _list.append(float(_dataColumnsCourses[_index][j]))
-
-    _list.sort()
+    _list = getList(_dataColumnsCourses, _index)
     return _list[int(len(_list) * 0.75)]
 
 
