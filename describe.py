@@ -7,33 +7,34 @@ def defineData(_dataPath):
     _data = _data.read()
     _data = _data.split('\n')
     
-    for i in range(len(_data)):
-        _data[i] = _data[i].split(',')
+    for _i in range(len(_data)):
+        _data[_i] = _data[_i].split(',')
     return _data
 
-def createColumns(_data):
-    _dataColumns = [[] for i in range(len(_data[0]))]
 
-    for i in range(len(_data)):
-        for j in range(len(_data[i])):
-            _dataColumns[j].append(_data[i][j])
+def createColumns(_data):
+    _dataColumns = [[] for _i in range(len(_data[0]))]
+
+    for _i in range(len(_data)):
+        for _j in range(len(_data[_i])):
+            _dataColumns[_j].append(_data[_i][_j])
 
     return _dataColumns
 
 
 def initDescribe(_data):
-    _dataDescribe = [[] for i in range(len(_data[0]) + 1 - 6)]
+    _dataDescribe = [[] for _i in range(len(_data[0]) + 1 - 6)]
 
-    for i in range(len(_dataDescribe)):
-        _dataDescribe[i] = [0 for j in range(9)]
+    for _i in range(len(_dataDescribe)):
+        _dataDescribe[_i] = [0 for _j in range(9)]
 
-    for i in range(len(_dataDescribe)):
-        if i != 0:
-            _dataDescribe[i][0] = _data[0][i + 6 - 1]
+    for _i in range(len(_dataDescribe)):
+        if _i != 0:
+            _dataDescribe[_i][0] = _data[0][_i + 6 - 1]
 
     _mapname = ['Feature', 'Count', 'Mean', 'Std', 'Min', '25%', '50%', '75%', 'Max']
-    for i in range(len(_dataDescribe[0])):
-        _dataDescribe[0][i] = _mapname[i]
+    for _i in range(len(_dataDescribe[0])):
+        _dataDescribe[0][_i] = _mapname[_i]
 
     return _dataDescribe
 
@@ -45,10 +46,10 @@ def getCount(_dataColumnsCourses, _index):
 def getMean(_dataColumnsCourses, _index):
     _sum = 0
     _count = 0
-    for j in range(len(_dataColumnsCourses[_index])):
-        if j != 0:
-            if _dataColumnsCourses[_index][j] != '':
-                _sum += float(_dataColumnsCourses[_index][j])
+    for _j in range(len(_dataColumnsCourses[_index])):
+        if _j != 0:
+            if _dataColumnsCourses[_index][_j] != '':
+                _sum += float(_dataColumnsCourses[_index][_j])
                 _count += 1
 
     return _sum / _count
@@ -58,9 +59,9 @@ def getStd(_dataColumnsCourses, _index):
     _sum = 0
     _count = 0
     _mean = getMean(_dataColumnsCourses, _index)
-    for j in range(1, len(_dataColumnsCourses[_index])):
-        if _dataColumnsCourses[_index][j] != '':
-            _sum += (float(_dataColumnsCourses[_index][j]) - _mean) ** 2
+    for _j in range(1, len(_dataColumnsCourses[_index])):
+        if _dataColumnsCourses[_index][_j] != '':
+            _sum += (float(_dataColumnsCourses[_index][_j]) - _mean) ** 2
             _count += 1
     return abs((_sum / _count - 1) ** 0.5)
 
@@ -71,21 +72,21 @@ def getMin(_dataColumnsCourses, _index):
         _i += 1
     _min = float(_dataColumnsCourses[_index][_i])
 
-    for j in range(len(_dataColumnsCourses[_index])):
-        if j != 0:
-            if _dataColumnsCourses[_index][j] != '':
-                if float(_dataColumnsCourses[_index][j]) < _min:
-                    _min = float(_dataColumnsCourses[_index][j])
+    for _j in range(len(_dataColumnsCourses[_index])):
+        if _j != 0:
+            if _dataColumnsCourses[_index][_j] != '':
+                if float(_dataColumnsCourses[_index][_j]) < _min:
+                    _min = float(_dataColumnsCourses[_index][_j])
 
     return _min
 
 
 def getList(_dataColumnsCourses, _index):
     _list = []
-    for j in range(len(_dataColumnsCourses[_index])):
-        if j != 0:
-            if _dataColumnsCourses[_index][j] != '':
-                _list.append(float(_dataColumnsCourses[_index][j]))
+    for _j in range(len(_dataColumnsCourses[_index])):
+        if _j != 0:
+            if _dataColumnsCourses[_index][_j] != '':
+                _list.append(float(_dataColumnsCourses[_index][_j]))
 
     _list.sort()
     return _list
@@ -112,11 +113,11 @@ def getMax(_dataColumnsCourses, _index):
         _i += 1
     _max = float(_dataColumnsCourses[_index][_i])
 
-    for j in range(len(_dataColumnsCourses[_index])):
-        if j != 0:
-            if _dataColumnsCourses[_index][j] != '':
-                if float(_dataColumnsCourses[_index][j]) > _max:
-                    _max = float(_dataColumnsCourses[_index][j])
+    for _j in range(len(_dataColumnsCourses[_index])):
+        if _j != 0:
+            if _dataColumnsCourses[_index][_j] != '':
+                if float(_dataColumnsCourses[_index][_j]) > _max:
+                    _max = float(_dataColumnsCourses[_index][_j])
 
     return _max
 
