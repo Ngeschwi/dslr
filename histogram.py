@@ -1,15 +1,13 @@
-from function import *
+
+import matplotlib.pyplot as plt
+from utils import *
+from utilsData import *
 
 
 data = defineData('datasets/dataset_train.csv')
 dataColumns = createColumns(data)
 dataColumnsCourses = dataColumns[6:]
-dataColumnsCourses = number_columns(dataColumnsCourses)
-
-
-
-
-
+dataColumnsCourses = stringToFloat(dataColumnsCourses)
 
 
 colors = ['red', 'blue', 'green', 'yellow']
